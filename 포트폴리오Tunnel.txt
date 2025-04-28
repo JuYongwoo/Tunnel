@@ -1,4 +1,0 @@
-본 Tunnel은 UNITY ESSET STORE의 에셋들을 사용합니다.
-
-Tunnel에 사용된 스크립트 파일들은 Scripts 폴더에서 볼 수 있습니다.
-Tunnel게임 실행은 Tunnel/Tunnel.exe로 실행하실 수 있습니다.
