@@ -1,25 +1,4 @@
-# Unity 프로젝트 UI 구조 설계 요약
-
-## 1. UI 흐름 다이어그램
-
-```
-[TitleCanvas]
-   ├── LoadButton      → PlayerPrefs 기반 씬 로딩 (Chapter1 / Chapter2)
-   ├── StartButton     → Chapter1 씬으로 이동
-   ├── SettingsButton  → SettingsCanvas 활성화
-   └── GameExitButton  → Application.Quit()
-
-[SettingsCanvas]
-   ├── ResolutionApplyButton → (현재 미구현) 해상도 설정
-   ├── ResetButton           → 설정 초기화 로직 자리
-   └── BackButton            → TitleCanvas로 복귀
-```
-
-※ Canvas 전환은 `GameObject` 이름 기반으로 자동 탐색하여 `SetActive(true/false)`로 처리됩니다.
-
----
-
-## 2. 설계 핵심 요약
+## 설계 핵심 요약
 
 이 프로젝트에서는 UI 관련 처리 로직을 다음과 같은 구조로 설계하였습니다:
 
@@ -27,20 +6,22 @@
   → `enum` 기반으로 버튼 이름 자동 매핑 및 `onClick` 자동 연결  
   → 유지보수 시 `enum`만 수정하면 UI 동작 확장 가능
 
+- **UI 버튼 이벤트 처리 자동화**  
+  → ButtonBinder를 통해 enum - Button 으로 맵핑하여 Button의 Action을 관리합니다.
+  → 게임 오브젝트의 이름을 통해 참조하는게 아닌, enum을 통해 관리함으로써 오류 발생률 저하
+
 - **Hover 이벤트 처리 자동화**  
   → `EventTrigger`를 코드에서 자동 삽입  
-  → 별도 스크립트 없이 Hover 효과 적용 (드래그 없음, 일관 구조 유지)
+  → 별도 스크립트 없이 Hover 효과 적용
 
-- **TitleCanvas ↔ SettingsCanvas 구조상 위치 탐색으로 처리**  
-  → UI 간 전환 시에도 드래그나 하드코딩 없이 유연하게 연결됨
+- **클래스 간 역할 분리**  
+  → 다른 클래스의 변수를 직접 참조하는게 아닌, Action 할당을 통해 처리합니다.
+  → 높은 응집도를 유지하여 스파게티 코드가 되지 않도록 합니다.
 
----
 
-## ⏱️ 추천 사용 기술 태그 (포트폴리오용)
 
-- UnityEngine.UI
-- EventTrigger
-- Enum-driven UI Mapping
-- Dynamic Component Binding
-- Canvas-based UI Navigation
-- Runtime Scene Management
+## 테스트 시 주의사항
+
+Unity 엔진에서 직접 여실 경우, Asset/Scenes/ 내의 Title 씬으로 실행해 주세요.
+
+게임을 시작하고 철창 앞에서 적을 피해 지나가려면 철창 왼쪽 벽을 밀어 지나갈 수 있습니다.
