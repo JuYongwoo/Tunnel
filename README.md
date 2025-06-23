@@ -29,7 +29,7 @@
 
 - **Hover 이벤트 처리 자동화**  
   → `EventTrigger`를 코드에서 자동 삽입  
-  → 별도 스크립트 없이 Hover 효과 적용 (드래그 없음, 일관 구조 유지)
+  → 별도 스크립트 없이 Hover 효과 적용
 
 - **TitleCanvas ↔ SettingsCanvas 구조상 위치 탐색으로 처리**  
   → UI 간 전환 시에도 드래그나 하드코딩 없이 유연하게 연결됨
