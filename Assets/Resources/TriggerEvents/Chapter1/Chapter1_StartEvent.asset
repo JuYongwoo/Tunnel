@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910369a8a946737429a6001deb896054, type: 3}
+  m_Name: Chapter1_StartEvent
+  m_EditorClassIdentifier: 
+  isColliderTriggerActive: 0
+  triggerPosition: {x: 0, y: 0, z: 0}
+  triggerdistance: 0
+  isItemTriggerActive: 0
+  tiggerGetItem: 
+  isDescription: 1
+  eventdescription: "\uBD88\uC758\uC758 \uC0AC\uACE0\uB85C \uD130\uB110\uC5D0 \uB5A8\uC5B4\uC9C0\uAC8C
+    \uB418\uC5C8\uB2E4. \uC774\uACF3\uC744 \uBE60\uC838\uB098\uAC08 \uBC29\uBC95\uC744
+    \uCC3E\uC544\uBCF4\uC790."
+  isSpeech: 1
+  eventspeech1: "\uC73C\uC73C..."
+  eventspeech2: "\uC9C0\uD558 \uD130\uB110\uC5D0 \uB5A8\uC5B4\uC9C4\uAC74\uAC00?"
+  eventspeech3: "\uC774\uACF3\uC744 \uB098\uAC08 \uBC29\uBC95\uC744 \uCC3E\uC544\uBD10\uC57C\uACA0\uC5B4"
+  eventspeech4: 
+  eventspeech5: 
+  isSceneChange: 0
+  eventscenechange: 
+  isFollow: 0
+  eventfollower: 
+  isSound: 0
+  sound: {fileID: 0}
+  isSave: 1
+  save: 1
+  isFadeOut: 1
+  isFadeIn: 0
+  isSpawnObject: 0
+  SpawnObject: {fileID: 0}
+  SpawnObjectPosition: {x: 0, y: 0, z: 0}
