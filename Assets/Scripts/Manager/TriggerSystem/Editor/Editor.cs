@@ -35,14 +35,12 @@ public class TriggerEventEditor : Editor
         EditorGUILayout.Space(10);
 
         // ====== Speech Section ======
-        EditorGUILayout.LabelField("Event Speed", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Event Speech", EditorStyles.boldLabel);
         te.isSpeech = EditorGUILayout.Toggle("Is Speech Active", te.isSpeech);
-        te.eventspeech1 = EditorGUILayout.TextField("Event Speech 1", te.eventspeech1);
-        te.eventspeech2 = EditorGUILayout.TextField("Event Speech 2", te.eventspeech2);
-        te.eventspeech3 = EditorGUILayout.TextField("Event Speech 3", te.eventspeech3);
-        te.eventspeech4 = EditorGUILayout.TextField("Event Speech 4", te.eventspeech4);
-        te.eventspeech5 = EditorGUILayout.TextField("Event Speech 5", te.eventspeech5);
-
+        for (int i = 0; i < te.eventSpeeches.Length; i++)
+        {
+            te.eventSpeeches[i] = EditorGUILayout.TextField($"Event Speech {i + 1}", te.eventSpeeches[i]);
+        }
         EditorGUILayout.Space(10);
 
         // ====== Others ======
@@ -76,7 +74,7 @@ public class TriggerEventEditor : Editor
         te.SpawnObjectName = EditorGUILayout.TextField("Spawn Object Prefab Name", te.SpawnObjectName);
         te.SpawnObjectPosition = EditorGUILayout.Vector3Field("Spawn Object Position", te.SpawnObjectPosition);
 
-        // ÀúÀå Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
         if (GUI.changed)
         {
             EditorUtility.SetDirty(te);

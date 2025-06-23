@@ -13,7 +13,7 @@ public class TriggerEventManager
 {
     public static event Action FadeIn;
     public static event Action FadeOut;
-    public static event Action<String, String, String, String, String> Speech;
+    public static event Action<string[]> Speech;
 
     [HideInInspector]
     public string NowMission = "";
@@ -152,7 +152,7 @@ public class TriggerEventManager
             }
             if (triggereventmap[eventname].isSpeech) // 대화 존재할 경우
             {
-                Speech(triggereventmap[eventname].eventspeech1, triggereventmap[eventname].eventspeech2, triggereventmap[eventname].eventspeech3, triggereventmap[eventname].eventspeech4, triggereventmap[eventname].eventspeech5);
+                Speech(triggereventmap[eventname].eventSpeeches);
             }
 
             if (triggereventmap[eventname].isSceneChange) //씬 전환 존재할 경우

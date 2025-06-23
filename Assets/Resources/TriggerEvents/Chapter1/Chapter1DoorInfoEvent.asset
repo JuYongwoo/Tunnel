@@ -21,12 +21,12 @@ MonoBehaviour:
   eventdescription: "\uBB38 \uC55E\uC5D0 \uB204\uAD70\uAC00\uAC00 \uC788\uB2E4. \uB4E4\uD0A4\uC9C0
     \uC54A\uACE0 \uCCA0\uCC3D\uC744 \uB118\uC5B4\uAC08 \uBC29\uBC95\uC744 \uCC3E\uC544\uBCF4\uC790."
   isSpeech: 1
-  eventspeech1: "\uCCA0\uCC3D \uB4A4\uC5D0 \uB204\uAD70\uAC00\uAC00 \uC788\uC796\uC544?"
-  eventspeech2: "\uB4E4\uD0A4\uC9C0 \uC54A\uACE0 \uB118\uC5B4\uAC08 \uBC29\uBC95\uC774
-    \uC788\uC744\uAE4C"
-  eventspeech3: 
-  eventspeech4: 
-  eventspeech5: 
+  eventSpeeches:
+  - "\uC820\uC7A5, \uCCA0\uCC3D \uC55E\uC5D0 \uB204\uAD70\uAC00 \uC788\uC796\uC544?"
+  - "\uB4E4\uD0A4\uC9C0 \uC54A\uACE0 \uC9C0\uB098\uAC08 \uBC29\uBC95\uC774 \uC788\uC744\uAE4C.."
+  - 
+  - 
+  - 
   isSceneChange: 0
   eventscenechange: 
   isFollow: 0
@@ -38,5 +38,5 @@ MonoBehaviour:
   isFadeOut: 0
   isFadeIn: 0
   isSpawnObject: 0
-  SpawnObject: {fileID: 0}
+  SpawnObjectName: 
   SpawnObjectPosition: {x: 0, y: 0, z: 0}

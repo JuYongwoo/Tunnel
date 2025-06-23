@@ -9,56 +9,28 @@ public class InGameUI :MonoBehaviour
 {
 
 
-    public float timeforrequirekey = 5.0f;
+    private float timeforrequirekey = 5.0f;
 
-    [HideInInspector]
-    public GameObject InventoryUI;
-    [HideInInspector]
-    public GameObject DiaryUI;
-    [HideInInspector]
-    public GameObject TextBookUI;
-    [HideInInspector]
-    public GameObject BasicUI;
-    [HideInInspector]
-    public GameObject PictureBookUI;
-    [HideInInspector]
-    public GameObject NoticeUI;
+    private GameObject InventoryUI;
+    private GameObject DiaryUI;
+    private GameObject TextBookUI;
+    private GameObject BasicUI;
+    private GameObject PictureBookUI;
+    private GameObject UseUI;
+    private GameObject AlertUI;
 
-    [HideInInspector]
-    public GameObject UseUI;
-    bool QDiarycheck = false;
+    private bool requirekeyon = false;
 
-    [HideInInspector]
-    public GameObject temppicturebook;
-    [HideInInspector]
-    public GameObject temptextbook;
+    private GameObject[] inven = new GameObject[30];
+    private string[] invencontentname = new string[30];
+    private int invencount = 0;
 
-
-    [HideInInspector]
-    public GameObject AlertUI;
-    bool requirekeyon = false;
-
-
-    public GameObject[] inven = new GameObject[30];
-    public string[] invencontentname = new string[30];
-    int invencount = 0;
-
-    bool Canvasactive = false;
-
-    public GameObject contentfolder;
-    GameObject InCodePrefab;
-
-
-
-
-
-    IEnumerator speechCoroutine;
-    [HideInInspector]
-    public GameObject PlayerSpeechUI;
-    string[] txts = new string[5];
-
-    [HideInInspector]
-    public GameObject FadeoutUI;
+    private GameObject contentfolder;
+    private GameObject InCodePrefab;
+    private IEnumerator speechCoroutine;
+    private GameObject PlayerSpeechUI;
+    private string[] txts = new string[5];
+    private GameObject FadeoutUI;
 
 
     Action updateaction;
@@ -237,21 +209,17 @@ public class InGameUI :MonoBehaviour
         Debug.Log("코루틴멈춤");
     }
 
-    public void startspeech(string txt1, string txt2, string txt3, string txt4, string txt5)
+    public void startspeech(params string[] lines)
     {
+        for (int i = 0; i < txts.Length; i++)
+        {
+            txts[i] = i < lines.Length ? lines[i] : string.Empty;
+        }
 
-        //추후에 아래 노가다 코드를 1.보내는 스트링 인자값을 한줄로 해서 쉼표로 구분 후 대입 2. 배열로 받아서 대입 으로 변경
-        txts[0] = txt1;
-        txts[1] = txt2;
-        txts[2] = txt3;
-        txts[3] = txt4;
-        txts[4] = txt5;
-
-        speechCoroutine = StartspeechCoroutine(); //문자열 받은 코루틴을 준비
+        speechCoroutine = StartspeechCoroutine(); // 문자열 받은 코루틴을 준비
         ManagerObject.Instance.StartCoroutine(speechCoroutine);
-        Debug.Log("코루틴시작");
-
     }
+
 
     public IEnumerator StartspeechCoroutine()
     {
@@ -277,14 +245,12 @@ public class InGameUI :MonoBehaviour
                 go.GetComponent<AudioSource>().Play();
                 PictureBookUI.transform.GetChild(0).GetComponent<Image>().sprite = go.GetComponent<Image>().sprite; //스크린의 스프라이트를 레이캐스트에 맞은 hit의 image컴포넌트의 스프라이트로 바꿈
                 PictureBookUI.SetActive(true); // 활성화
-                temppicturebook = go;
             }
             else if (Type == PlayerInteractor.ItemType.Textbook)
             {
                 go.GetComponent<AudioSource>().Play();
                 TextBookUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = go.GetComponent<Text>().text; // 해당 오브젝트의 text 컴포넌트에 적힌 내용을 가져옴
                 TextBookUI.SetActive(true); // 활성화
-                temptextbook = go;
             }
             else if(Type == PlayerInteractor.ItemType.Door)
             {
@@ -319,10 +285,10 @@ public class InGameUI :MonoBehaviour
             UseUI.SetActive(false);
         };
 
-        TriggerEventManager.Speech += (str1, str2, str3, str4, str5) =>
+        TriggerEventManager.Speech += lines =>
         {
             stopspeech();
-            startspeech(str1, str2, str3, str4, str5);
+            startspeech(lines); // params string[] 라서 배열도 되고 여러 인자도 됨
         };
 
         TriggerEventManager.FadeIn += () =>

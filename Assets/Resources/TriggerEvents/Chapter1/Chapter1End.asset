@@ -20,11 +20,13 @@ MonoBehaviour:
   isDescription: 1
   eventdescription: "\uBE68\uB9AC \uD130\uB110\uC758 \uBD88\uBE5B\uC744 \uB530\uB77C\uAC00\uC790"
   isSpeech: 1
-  eventspeech1: "\uB4E4\uCF30\uB2E4, \uC11C\uB458\uB7EC \uAC00\uC57C\uD574!"
-  eventspeech2: 
-  eventspeech3: 
-  eventspeech4: 
-  eventspeech5: 
+  eventSpeeches:
+  - "\uB4E4\uCF30\uB2E4! \uC5B4\uC11C \uD130\uB110\uC758 \uBD88\uBE5B\uC744 \uB530\uB77C
+    \uB3C4\uB9DD\uAC00\uC790"
+  - 
+  - 
+  - 
+  - 
   isSceneChange: 0
   eventscenechange: 
   isFollow: 1
@@ -36,5 +38,5 @@ MonoBehaviour:
   isFadeOut: 0
   isFadeIn: 0
   isSpawnObject: 0
-  SpawnObject: {fileID: 0}
+  SpawnObjectName: 
   SpawnObjectPosition: {x: 0, y: 0, z: 0}

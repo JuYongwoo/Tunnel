@@ -20,12 +20,12 @@ MonoBehaviour:
   isDescription: 0
   eventdescription: 
   isSpeech: 1
-  eventspeech1: "\uC774\uAC78\uB85C \uBC14\uB85C \uC55E\uC758 \uBB38\uC744 \uC5F4
-    \uC218 \uC788\uC9C0\uB9CC.."
-  eventspeech2: 
-  eventspeech3: 
-  eventspeech4: 
-  eventspeech5: 
+  eventSpeeches:
+  - "\uC774\uAC78\uB85C \uC55E\uC758 \uBB38\uC744 \uC5F4 \uC218 \uC788\uC9C0\uB9CC.."
+  - 
+  - 
+  - 
+  - 
   isSceneChange: 0
   eventscenechange: 
   isFollow: 0
@@ -37,5 +37,5 @@ MonoBehaviour:
   isFadeOut: 0
   isFadeIn: 0
   isSpawnObject: 0
-  SpawnObject: {fileID: 0}
+  SpawnObjectName: 
   SpawnObjectPosition: {x: 0, y: 0, z: 0}
