@@ -34,13 +34,3 @@
 - **TitleCanvas ↔ SettingsCanvas 구조상 위치 탐색으로 처리**  
   → UI 간 전환 시에도 드래그나 하드코딩 없이 유연하게 연결됨
 
----
-
-## ⏱️ 추천 사용 기술 태그 (포트폴리오용)
-
-- UnityEngine.UI
-- EventTrigger
-- Enum-driven UI Mapping
-- Dynamic Component Binding
-- Canvas-based UI Navigation
-- Runtime Scene Management
