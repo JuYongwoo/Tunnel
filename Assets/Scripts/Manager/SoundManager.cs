@@ -21,6 +21,8 @@ public class SoundManager
     }
     public void OnStart()
     {
+        InGameUI.Textsoundplay += () => { }; //TODO JYW 순간적으로 audio 생성하고 clip재생하고 없애기
+        InGameUI.Keysoundplay += () => { }; //TODO JYW 순간적으로 audio 생성하고 clip재생하고 없애기
     }
 
         public void OnUpdate()

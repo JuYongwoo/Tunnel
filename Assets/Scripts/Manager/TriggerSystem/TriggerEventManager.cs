@@ -13,7 +13,7 @@ public class TriggerEventManager
 {
     public static event Action FadeIn;
     public static event Action FadeOut;
-    public static event Action<string[]> Speech;
+    public static event Action<List<string>> Speech;
 
     [HideInInspector]
     public string NowMission = "";
@@ -159,12 +159,6 @@ public class TriggerEventManager
             {
                 SceneManager.LoadScene(triggereventmap[eventname].eventscenechange);
             }
-
-            if (triggereventmap[eventname].isFollow)
-            {
-                GameObject.Find(triggereventmap[eventname].eventfollower).GetComponent<NavMeshAgent>().destination = ManagerObject.Scene.ThisScenePlayer.transform.position;
-
-            }
             if (triggereventmap[eventname].isSound)
             {
                 ManagerObject.Sound.PlayMusic(triggereventmap[eventname].sound);
@@ -183,19 +177,47 @@ public class TriggerEventManager
             {
                 FadeOut();
             }
+
+
+            bool sameFollowObject = false;
+            bool samePatrolObject = false;
+
             if (triggereventmap[eventname].isSpawnObject)
             {
                 //GameObject go = GameObject.Instantiate(Resources.Load<GameObject>($"Prefabs/" + triggereventmap[eventname].SpawnObjectName));
-                var prefab = Resources.Load<GameObject>("Prefabs/PatrollingZombie");
-                Debug.Log($"Prefab is null? {prefab == null}");
-                Debug.Log($"Prefab name: {prefab.name}");
-
-                var go = GameObject.Instantiate(prefab);
-                Debug.Log($"Instantiated object name: {go.name}");
+                GameObject prefab = Resources.Load<GameObject>($"Prefabs/" + triggereventmap[eventname].SpawnPrefabName);
+                GameObject go = GameObject.Instantiate(prefab);
+                go.name = triggereventmap[eventname].SpawnNaming;
                 go.transform.position = triggereventmap[eventname].SpawnObjectPosition;
-
+                if (triggereventmap[eventname].isFollow)
+                {
+                    ManagerObject.Resource.GetorAddComponent<Following>(go);
+                    sameFollowObject = true;
+                }
+                if (triggereventmap[eventname].isPatrol)
+                {
+                    Patrolling Patroll = ManagerObject.Resource.GetorAddComponent<Patrolling>(go);
+                    Patroll.patrolpositions = triggereventmap[eventname].eventPatrolPositions;
+                    samePatrolObject = true;
+                }
             }
 
+            if (triggereventmap[eventname].isFollow && !sameFollowObject)
+            {
+                GameObject go = GameObject.Find(triggereventmap[eventname].eventfollower);
+                ManagerObject.Resource.GetorAddComponent<Following>(go);
+
+            }
+            if (triggereventmap[eventname].isPatrol && !samePatrolObject)
+            {
+                GameObject go = GameObject.Find(triggereventmap[eventname].PatrolObjectName);
+                Patrolling Patroll = ManagerObject.Resource.GetorAddComponent<Patrolling>(go);
+                Patroll.patrolpositions = triggereventmap[eventname].eventPatrolPositions;
+
+
+
+
+            }
 
 
 

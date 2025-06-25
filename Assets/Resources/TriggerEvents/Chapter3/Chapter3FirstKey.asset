@@ -10,21 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910369a8a946737429a6001deb896054, type: 3}
-  m_Name: Ch2KeyGet
+  m_Name: Chapter3FirstKey
   m_EditorClassIdentifier: 
   isColliderTriggerActive: 0
   triggerPosition: {x: 0, y: 0, z: 0}
   triggerdistance: 0
   isItemTriggerActive: 1
-  tiggerGetItem: Door03_prkey
-  isDescription: 1
-  eventdescription: "\uC870\uC2EC\uD788 \uC6C0\uC9C1\uC5EC\uC11C \uC815\uBB38 \uC5F4\uC1E0\uB97C
-    \uCC3E\uC544 \uBC16\uC73C\uB85C \uB098\uAC00\uC790"
+  tiggerGetItem: doorkey
+  isDescription: 0
+  eventdescription: 
   isSpeech: 1
   eventSpeeches:
-  - "\uD604\uAD00 \uC5F4\uC1E0\uB85C \uBCF4\uC774\uC9C0\uB294 \uC54A\uB294\uB370"
-  - "\uC5B4\uB514\uC5D0 \uC0AC\uC6A9\uD560 \uC218 \uC788\uC744\uAE4C?"
-  - 
+  - "\uC5B4\uB518\uAC00\uC758 \uCCA0\uCC3D \uBB38 \uC5F4\uC1E0\uB2E4"
   - 
   - 
   isSceneChange: 0
@@ -35,15 +32,12 @@ MonoBehaviour:
   save: -1
   isFadeOut: 0
   isFadeIn: 0
-  isSpawnObject: 1
-  SpawnPrefabName: Zombie
-  SpawnNaming: KeyGetZombie
-  SpawnObjectPosition: {x: 7.112, y: 0.4, z: 21}
+  isSpawnObject: 0
+  SpawnPrefabName: 
+  SpawnNaming: 
+  SpawnObjectPosition: {x: 0, y: 0, z: 0}
   isFollow: 0
   eventfollower: 
-  isPatrol: 1
-  PatrolObjectName: KeyGetZombie
-  eventPatrolPositions:
-  - {x: 7.112, y: 0.4, z: 21}
-  - {x: 1.6, y: 0.4, z: 16.794}
-  - {x: -4, y: 0.4, z: 21}
+  isPatrol: 0
+  PatrolObjectName: 
+  eventPatrolPositions: []

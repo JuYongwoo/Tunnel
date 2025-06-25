@@ -20,8 +20,19 @@ public class PlayerMove : MonoBehaviour
     {
 
         transform.eulerAngles = new Vector3(0, UnityEngine.Camera.main.GetComponent<Camera>().ry, 0);
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            gameObject.tag = "Crouching"; //컨트롤 누를 시 해당 오브젝트(플레이어)의 태그 변경
+            return;
+        }
+        else {
+            gameObject.tag = "Player";
+        }
+
+
         //transform.rotation = Camera.main.transform.rotation;
-        
+
         float h = Input.GetAxis("Horizontal"); //축 입력받기
         float v = Input.GetAxis("Vertical");
         
@@ -47,17 +58,7 @@ public class PlayerMove : MonoBehaviour
         //transform.position += dir * speed * Time.deltaTime;
         charCtrl.SimpleMove(dir * speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            gameObject.tag = "Crouching"; //컨트롤 누를 시 해당 오브젝트(플레이어)의 태그 변경
-            speed = 0;
-        }
 
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            gameObject.tag = "Player";
-            speed = 150;
-        }
     }
 
 

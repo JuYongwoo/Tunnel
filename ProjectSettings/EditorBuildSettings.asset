@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Chapter2.unity
     guid: c4ecf35e5737f804184e2a66603c6240
   - enabled: 1
+    path: Assets/Scenes/Chapter3.unity
+    guid: 5003e9f1d2951674b80f02289f4b52f1
+  - enabled: 1
     path: Assets/Scenes/Clear.unity
     guid: 8359e83c679279842b6bcda3114bff01
   - enabled: 1

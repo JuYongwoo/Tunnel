@@ -7,28 +7,29 @@ using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
-
-
-    protected NavMeshAgent agent;
-    protected Animator animator;
-    float currentspeed;
-
-    virtual public void Start()
+    public enum MoveStat
     {
+        Stand, //0
+        Walk, //1
+        Run //2
+    }
+    public MoveStat moveStat = MoveStat.Stand;
 
-        agent = GetComponent<NavMeshAgent>();
+    protected Animator animator;
+
+    virtual protected void Start()
+    {
         animator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
             SceneManager.LoadScene("GameOver");
     }
 
-    virtual public void Update()
+    virtual protected void Update()
     {
-        currentspeed = agent.velocity.magnitude;
-        animator.SetFloat("Speed", currentspeed);
+        animator.SetInteger("MoveStat", (int)moveStat);
     }
 }

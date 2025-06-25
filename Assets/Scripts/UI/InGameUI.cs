@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using System.Collections.Generic;
 
 public class InGameUI :MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class InGameUI :MonoBehaviour
     private string[] txts = new string[5];
     private GameObject FadeoutUI;
 
+    static public event Action Textsoundplay;
+    static public event Action Keysoundplay;
 
     Action updateaction;
 
@@ -209,11 +212,11 @@ public class InGameUI :MonoBehaviour
         Debug.Log("코루틴멈춤");
     }
 
-    public void startspeech(params string[] lines)
+    public void startspeech(List<string> lines)
     {
         for (int i = 0; i < txts.Length; i++)
         {
-            txts[i] = i < lines.Length ? lines[i] : string.Empty;
+            txts[i] = i < lines.Count ? lines[i] : string.Empty;
         }
 
         speechCoroutine = StartspeechCoroutine(); // 문자열 받은 코루틴을 준비
@@ -242,13 +245,13 @@ public class InGameUI :MonoBehaviour
         {
             if(Type == PlayerInteractor.ItemType.PictureBook)
             {
-                go.GetComponent<AudioSource>().Play();
+                Textsoundplay();
                 PictureBookUI.transform.GetChild(0).GetComponent<Image>().sprite = go.GetComponent<Image>().sprite; //스크린의 스프라이트를 레이캐스트에 맞은 hit의 image컴포넌트의 스프라이트로 바꿈
                 PictureBookUI.SetActive(true); // 활성화
             }
             else if (Type == PlayerInteractor.ItemType.Textbook)
             {
-                go.GetComponent<AudioSource>().Play();
+                Textsoundplay();
                 TextBookUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = go.GetComponent<Text>().text; // 해당 오브젝트의 text 컴포넌트에 적힌 내용을 가져옴
                 TextBookUI.SetActive(true); // 활성화
             }
@@ -259,7 +262,7 @@ public class InGameUI :MonoBehaviour
                 {
                     go.transform.Rotate(0, 90, 0); //Y 90도 회전
                     go.GetComponent<Collider>().enabled = false; //콜라이더 끄기(부딪X 레이캐스트감지 X 더이상 회전안됨)
-                    go.GetComponent<AudioSource>().Play();
+                    Keysoundplay();
                 }
                 else if (!findinven(go.name + "key"))
                 {
@@ -270,7 +273,7 @@ public class InGameUI :MonoBehaviour
             {
                 go.SetActive(false);
                 intoinven(go);
-                go.GetComponentInParent<AudioSource>().Play();
+                Keysoundplay();
             }
             else if(Type == PlayerInteractor.ItemType.MovingWall)
             {
@@ -302,15 +305,8 @@ public class InGameUI :MonoBehaviour
             SetAlpha(1f);
             updateaction += FadeOut;
         };
-
-        Chapter2.InGameUIOn += () =>
-        {
-            BasicUI.SetActive(true);
-            PlayerSpeechUI.SetActive(true);
-        };
-
         
-        Chapter1.InGameUIOn += () =>
+        TitleUI.InGameUIOn += () =>
         {
             BasicUI.SetActive(true);
             PlayerSpeechUI.SetActive(true);

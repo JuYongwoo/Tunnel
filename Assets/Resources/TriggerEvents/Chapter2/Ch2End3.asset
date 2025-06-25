@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910369a8a946737429a6001deb896054, type: 3}
-  m_Name: Ch2Clear
+  m_Name: Ch2End3
   m_EditorClassIdentifier: 
   isColliderTriggerActive: 1
-  triggerPosition: {x: 0, y: 0, z: -40}
-  triggerdistance: 20
+  triggerPosition: {x: 0, y: 0, z: -10}
+  triggerdistance: 5
   isItemTriggerActive: 0
   tiggerGetItem: 
   isDescription: 0
@@ -26,16 +26,20 @@ MonoBehaviour:
   - 
   - 
   - 
-  isSceneChange: 1
-  eventscenechange: Chapter3
-  isFollow: 0
-  eventfollower: 
+  isSceneChange: 0
+  eventscenechange: 
   isSound: 0
   sound: {fileID: 0}
   isSave: 0
   save: -1
   isFadeOut: 0
   isFadeIn: 0
-  isSpawnObject: 0
-  SpawnObjectName: 
-  SpawnObjectPosition: {x: 0, y: 0, z: 0}
+  isSpawnObject: 1
+  SpawnPrefabName: Zombie
+  SpawnNaming: EndZombie3
+  SpawnObjectPosition: {x: -1, y: 0, z: -20.29}
+  isFollow: 1
+  eventfollower: EndZombie3
+  isPatrol: 0
+  PatrolObjectName: 
+  eventPatrolPositions: []

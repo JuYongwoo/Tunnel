@@ -12,6 +12,7 @@ public class TitleUI : UIButtonBinder<TitleUI.ButtonID>
 {
 
     private GameObject settingsScreen;
+    static public event Action InGameUIOn;
 
     public enum ButtonID
     {
@@ -38,7 +39,8 @@ public class TitleUI : UIButtonBinder<TitleUI.ButtonID>
         return new Dictionary<ButtonID, UnityAction>
         {
             { ButtonID.LoadButton, MainGameLoadButtonClick },
-            { ButtonID.StartButton, () => { SceneManager.LoadScene("Chapter1"); } },
+            { ButtonID.StartButton, () => { SceneManager.LoadScene("Chapter1");
+                                            InGameUIOn();} },
             { ButtonID.SettingsButton, () => { settingsScreen.SetActive(true); } },
             { ButtonID.GameExitButton, () => { Application.Quit(); } }
         };
@@ -48,6 +50,7 @@ public class TitleUI : UIButtonBinder<TitleUI.ButtonID>
 
     public void MainGameLoadButtonClick()
     {
+        InGameUIOn();
         int chap = PlayerPrefs.GetInt("chap");
         switch (chap)
         {
@@ -56,6 +59,9 @@ public class TitleUI : UIButtonBinder<TitleUI.ButtonID>
                 break;
             case 2:
                 SceneManager.LoadScene("Chapter2");
+                break;
+            case 3:
+                SceneManager.LoadScene("Chapter3");
                 break;
 
         }

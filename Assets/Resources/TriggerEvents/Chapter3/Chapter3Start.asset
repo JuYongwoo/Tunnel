@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910369a8a946737429a6001deb896054, type: 3}
-  m_Name: Ch2Start
+  m_Name: Chapter3Start
   m_EditorClassIdentifier: 
   isColliderTriggerActive: 0
   triggerPosition: {x: 0, y: 0, z: 0}
@@ -18,13 +18,12 @@ MonoBehaviour:
   isItemTriggerActive: 0
   tiggerGetItem: 
   isDescription: 1
-  eventdescription: "\uC5B4\uB514\uC778\uC9C0 \uBAA8\uB97C \uC0B0\uC7A5\uC5D0 \uAC07\uD600\uBC84\uB838\uB2E4.
-    \uC880\uBE44\uB97C \uD53C\uD574 \uB098\uAC08 \uC218 \uC788\uB294 \uBC29\uBC95\uC744
-    \uCC3E\uC544\uBCF4\uC790."
+  eventdescription: "\uAC70\uC758 \uB2E4 \uC628 \uAC83 \uAC19\uB2E4. \uBBF8\uB85C\uB97C
+    \uD0C8\uCD9C\uD558\uC790."
   isSpeech: 1
   eventSpeeches:
-  - "\uACB0\uAD6D \uC7A1\uD600\uC11C \uC232 \uC18D \uC0B0\uC7A5\uC5D0 \uAC07\uD600\uBC84\uB838\uB2E4"
-  - "\uC774 \uAC74\uBB3C\uC744 \uBE60\uC838\uB098\uAC08 \uBC29\uBC95\uC744 \uCC3E\uC544\uBCF4\uC790"
+  - "\uAC04\uC2E0\uD788 \uB530\uB3CC\uB9AC\uB294\uB370 \uC131\uACF5\uD588\uB2E4"
+  - "\uC774\uC81C \uC774 \uBBF8\uB85C\uB9CC \uD0C8\uCD9C\uD558\uBA74.."
   - 
   - 
   - 
@@ -33,11 +32,12 @@ MonoBehaviour:
   isSound: 0
   sound: {fileID: 0}
   isSave: 1
-  save: 2
+  save: 3
   isFadeOut: 1
   isFadeIn: 0
   isSpawnObject: 0
-  SpawnObjectName: 
+  SpawnPrefabName: 
+  SpawnNaming: 
   SpawnObjectPosition: {x: 0, y: 0, z: 0}
   isFollow: 0
   eventfollower: 

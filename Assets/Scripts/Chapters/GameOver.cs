@@ -9,7 +9,7 @@ public class GameOver : MonoBehaviour
     public static event Action InGameUIOff;
     void Start()
     {
-        Invoke("LoadMainScene", 1f);
+        Invoke("LoadTitleScene", 1f);
 
         InGameUIOff();
 
@@ -19,8 +19,8 @@ public class GameOver : MonoBehaviour
     {
         
     }
-    void LoadMainScene()
+    void LoadTitleScene()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Title");
     }
 }

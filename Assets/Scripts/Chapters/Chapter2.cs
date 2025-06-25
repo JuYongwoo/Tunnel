@@ -7,12 +7,8 @@ using UnityEngine.UI;
 
 public class Chapter2 : MonoBehaviour
 {
-    static public event Action InGameUIOn;
     private void Start()
     {
         ManagerObject.TriggerEvent.PlayEvent("Ch2Start");
-
-
-        InGameUIOn();
     }
 }

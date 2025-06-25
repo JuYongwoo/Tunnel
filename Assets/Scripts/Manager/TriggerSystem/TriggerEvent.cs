@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,18 +16,14 @@ public class TriggerEvent : ScriptableObject
     public bool isItemTriggerActive;
     public string tiggerGetItem; 
 
-
     public bool isDescription;
     public string eventdescription;
 
     public bool isSpeech;
-    public string []eventSpeeches = new string[5];
+    public List<string> eventSpeeches = new List<string>();
 
     public bool isSceneChange;
     public string eventscenechange = "";
-
-    public bool isFollow;
-    public string eventfollower = "";
 
     public bool isSound;
     public AudioClip sound = null;
@@ -38,8 +35,16 @@ public class TriggerEvent : ScriptableObject
     public bool isFadeIn = false;
 
     public bool isSpawnObject = false;
-    public string SpawnObjectName = "";
+    public string SpawnPrefabName = "";
+    public string SpawnNaming = "";
     public Vector3 SpawnObjectPosition;
+
+    public bool isFollow;
+    public string eventfollower = "";
+
+    public bool isPatrol;
+    public string PatrolObjectName = "";
+    public List<Vector3> eventPatrolPositions = new List<Vector3>();
 
 
 
