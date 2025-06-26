@@ -36,7 +36,7 @@ public class InGameUI :MonoBehaviour
     static public event Action Textsoundplay;
     static public event Action Keysoundplay;
 
-    Action updateaction;
+    Action FadeAction;
 
     public void Awake()
     {
@@ -84,17 +84,13 @@ public class InGameUI :MonoBehaviour
         if (SceneManager.GetActiveScene().name == "GameOver") return;
 
 
-        UseUI.SetActive(!PictureBookUI.activeSelf); //그림책이 보여지고 있으면 획득표시 없애기
-        UseUI.SetActive(!TextBookUI.activeSelf); //글책이 보여지고 있으면 획득표시 없애기
-        BasicUI.SetActive(!PictureBookUI.activeSelf && !DiaryUI.activeSelf && !InventoryUI.activeSelf); //책이미지, 다이어리, 인벤토리 모두 안열려있을 시 기본UI활성화
-        AlertUI.SetActive(requirekeyon);
-
-
 
         if (Input.GetKeyDown(KeyCode.Tab) && !InventoryUI.activeSelf) //인벤토리
         {
             closeAll();
             InventoryUI.SetActive(true);
+            UseUI.SetActive(false);
+            BasicUI.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Q) && !DiaryUI.activeSelf) // 다이어리
@@ -103,12 +99,17 @@ public class InGameUI :MonoBehaviour
             //DiaryUI.GetComponentInParent<AudioSource>().Play(); //TODO JYW 소리 재생은 SoundManager에서
             DiaryUI.SetActive(true); //Q다이어리 체크에 따라 활성화
             DiaryUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = ManagerObject.TriggerEvent.NowMission;
+            UseUI.SetActive(false);
+            BasicUI.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
             //TODO JYW 딸깍소리 추가할 것
             closeAll();
+            UseUI.SetActive(true);
+            BasicUI.SetActive(true);
+
         }
 
 
@@ -126,7 +127,7 @@ public class InGameUI :MonoBehaviour
         }
 
         
-        updateaction?.Invoke();
+        FadeAction?.Invoke();
     }
 
 
@@ -148,7 +149,7 @@ public class InGameUI :MonoBehaviour
         if (color.a >= 1f)
         {
             color.a = 1f;
-            updateaction -= FadeIn;
+            FadeAction -= FadeIn;
         }
         image.color = color;
     }
@@ -161,9 +162,20 @@ public class InGameUI :MonoBehaviour
         if (color.a <= 0f)
         {
             color.a = 0f;
-            updateaction -= FadeOut;
+            FadeAction -= FadeOut;
         }
         image.color = color;
+    }
+
+    private void requirekeyAlert()
+    {
+        AlertUI.SetActive(true);
+        AlertUI.transform.GetChild(0).GetComponent<Text>().text = "열쇠가 필요합니다.";
+    }
+    private void endrequirekeyAlert()
+    {
+        AlertUI.SetActive(false);
+        AlertUI.transform.GetChild(0).GetComponent<Text>().text = "";
     }
 
     public void closeAll()
@@ -248,25 +260,31 @@ public class InGameUI :MonoBehaviour
                 Textsoundplay();
                 PictureBookUI.transform.GetChild(0).GetComponent<Image>().sprite = go.GetComponent<Image>().sprite; //스크린의 스프라이트를 레이캐스트에 맞은 hit의 image컴포넌트의 스프라이트로 바꿈
                 PictureBookUI.SetActive(true); // 활성화
+                UseUI.SetActive(false);
+                BasicUI.SetActive(false);
             }
             else if (Type == PlayerInteractor.ItemType.Textbook)
             {
                 Textsoundplay();
                 TextBookUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = go.GetComponent<Text>().text; // 해당 오브젝트의 text 컴포넌트에 적힌 내용을 가져옴
                 TextBookUI.SetActive(true); // 활성화
+                UseUI.SetActive(false);
+                BasicUI.SetActive(false);
+
             }
             else if(Type == PlayerInteractor.ItemType.Door)
             {
 
-                if (findinven(go.name + "key")) // "door이름+key" 이름이 있는지 찾음
+                if (findinven(go.GetComponent<Door>().KeyName)) // 해당 문의 door class의 KeyName이 인벤토리에 있는지 확인
                 {
                     go.transform.Rotate(0, 90, 0); //Y 90도 회전
-                    go.GetComponent<Collider>().enabled = false; //콜라이더 끄기(부딪X 레이캐스트감지 X 더이상 회전안됨)
+                    go.GetComponent<Collider>().enabled = false;
                     Keysoundplay();
                 }
-                else if (!findinven(go.name + "key"))
+                else
                 {
-                    timeforrequirekey = 0.0f;
+                    requirekeyAlert();
+                    Invoke("endrequirekeyAlert", 3f);
                 }
             }
             else if (Type == PlayerInteractor.ItemType.Key)
@@ -297,13 +315,13 @@ public class InGameUI :MonoBehaviour
         TriggerEventManager.FadeIn += () =>
         {
             SetAlpha(0f);
-            updateaction += FadeIn;
+            FadeAction += FadeIn;
         };
         
         TriggerEventManager.FadeOut += () =>
         {
             SetAlpha(1f);
-            updateaction += FadeOut;
+            FadeAction += FadeOut;
         };
         
         TitleUI.InGameUIOn += () =>

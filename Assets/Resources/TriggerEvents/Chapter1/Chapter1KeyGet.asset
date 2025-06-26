@@ -28,8 +28,6 @@ MonoBehaviour:
   - 
   isSceneChange: 0
   eventscenechange: 
-  isFollow: 0
-  eventfollower: 
   isSound: 0
   sound: {fileID: 0}
   isSave: 0
@@ -37,5 +35,11 @@ MonoBehaviour:
   isFadeOut: 0
   isFadeIn: 0
   isSpawnObject: 0
-  SpawnObjectName: 
+  SpawnPrefabName: 
+  SpawnNaming: 
   SpawnObjectPosition: {x: 0, y: 0, z: 0}
+  isFollow: 0
+  eventfollower: 
+  isPatrol: 0
+  PatrolObjectName: 
+  eventPatrolPositions: []

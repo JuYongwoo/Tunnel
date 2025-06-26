@@ -9,6 +9,7 @@ public class ManagerObject : MonoBehaviour
 
     public static SceneManagerJ Scene = new SceneManagerJ();
     public static TriggerEventManager TriggerEvent = new TriggerEventManager();
+    public static DoorKeyManager DoorKey = new DoorKeyManager();
     public static SoundManager Sound = new SoundManager();
     public static ResourceManager Resource = new ResourceManager();
 
@@ -18,6 +19,7 @@ public class ManagerObject : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Scene.OnAwake();
         TriggerEvent.OnAwake();
+        DoorKey.OnAwake();
         Sound.OnAwake();
         Resource.OnAwake();
     }
@@ -25,6 +27,7 @@ public class ManagerObject : MonoBehaviour
     {
         Scene.OnStart();
         TriggerEvent.OnStart();
+        DoorKey.OnStart();
         Sound.OnStart();
         Resource.OnStart();
     }
@@ -32,6 +35,7 @@ public class ManagerObject : MonoBehaviour
     {
         Scene.OnUpdate();
         TriggerEvent.OnUpdate();
+        DoorKey.OnUpdate();
         Sound.OnUpdate();
         Resource.OnUpdate();
     }

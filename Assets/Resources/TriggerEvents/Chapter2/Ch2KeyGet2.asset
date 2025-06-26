@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910369a8a946737429a6001deb896054, type: 3}
-  m_Name: Chapter3EndKey
+  m_Name: Ch2KeyGet2
   m_EditorClassIdentifier: 
   isColliderTriggerActive: 0
   triggerPosition: {x: 0, y: 0, z: 0}
   triggerdistance: 0
   isItemTriggerActive: 1
-  tiggerGetItem: endkey
+  tiggerGetItem: 
   isDescription: 0
   eventdescription: 
   isSpeech: 1
   eventSpeeches:
-  - "\uC774\uAC8C \uBD84\uBA85 \uB9C8\uC9C0\uB9C9 \uC5F4\uC1E0\uC77C\uAC70\uC57C"
+  - "\uC774\uC81C \uBC16\uC73C\uB85C \uB098\uAC08 \uC218 \uC788\uC5B4"
   isSceneChange: 0
   eventscenechange: 
   isSound: 0

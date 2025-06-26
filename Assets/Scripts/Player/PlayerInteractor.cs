@@ -44,7 +44,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             "picturebook" => HandleInteraction(ItemType.PictureBook, obj, "E 읽기"),
             "textbook" => HandleInteraction(ItemType.Textbook, obj, "E 읽기"),
-            "door" => HandleInteraction(ItemType.Door, obj, "E 읽기"),
+            "door" => HandleInteraction(ItemType.Door, obj, "E 열기"),
             "key" => HandleInteraction(ItemType.Key, obj, "E 획득"),
             "movingwall" => HandleInteraction(ItemType.MovingWall, obj, "E 밀기"),
             _ => false

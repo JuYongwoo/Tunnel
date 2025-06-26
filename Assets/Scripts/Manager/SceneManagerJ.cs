@@ -40,6 +40,9 @@ public class SceneManagerJ
         ManagerObject.TriggerEvent.LoadCurrentSceneTriggerEvents();
         ManagerObject.TriggerEvent.mappingAlltriggerEvents();
 
+        ManagerObject.DoorKey.LoadDoorKeyDatas();
+        ManagerObject.DoorKey.applyDoorKeydatas();
+
         
 
         if (SceneManager.GetActiveScene().name == "Title")

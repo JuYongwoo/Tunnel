@@ -38,33 +38,13 @@ public class TitleUI : UIButtonBinder<TitleUI.ButtonID>
     {
         return new Dictionary<ButtonID, UnityAction>
         {
-            { ButtonID.LoadButton, MainGameLoadButtonClick },
+            { ButtonID.LoadButton, () => {SceneManager.LoadScene($"Chapter"+PlayerPrefs.GetInt("chap"));
+                                            InGameUIOn();} },
             { ButtonID.StartButton, () => { SceneManager.LoadScene("Chapter1");
                                             InGameUIOn();} },
             { ButtonID.SettingsButton, () => { settingsScreen.SetActive(true); } },
             { ButtonID.GameExitButton, () => { Application.Quit(); } }
         };
-    }
-
-
-
-    public void MainGameLoadButtonClick()
-    {
-        InGameUIOn();
-        int chap = PlayerPrefs.GetInt("chap");
-        switch (chap)
-        {
-            case 1:
-                SceneManager.LoadScene("Chapter1");
-                break;
-            case 2:
-                SceneManager.LoadScene("Chapter2");
-                break;
-            case 3:
-                SceneManager.LoadScene("Chapter3");
-                break;
-
-        }
     }
 
 

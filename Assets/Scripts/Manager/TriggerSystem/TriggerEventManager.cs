@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.EventSystems.EventTrigger;
 
 
 public class TriggerEventManager
@@ -113,8 +112,8 @@ public class TriggerEventManager
 
     void CreateItemTrigger(TriggerEvent trigger)
     {
-        Key key = GameObject.Find(trigger.tiggerGetItem).GetComponent<Key>();
-        key.DisableAction = () =>
+        Item go = GameObject.Find(trigger.tiggerGetItem).GetComponent<Item>();
+        go.DisableAction = () =>
         {
             if (!trigger.istriggered)
             {

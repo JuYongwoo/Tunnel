@@ -14938,7 +14938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013332381216, guid: 09fc69805d102f2468849ae0f8f9b62e, type: 3}
       propertyPath: m_Name
-      value: finaldoor
+      value: end
       objectReference: {fileID: 0}
     - target: {fileID: 1000013332381216, guid: 09fc69805d102f2468849ae0f8f9b62e, type: 3}
       propertyPath: m_TagString

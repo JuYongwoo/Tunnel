@@ -22,8 +22,6 @@ MonoBehaviour:
   isSpeech: 1
   eventSpeeches:
   - "\uC5B4\uB518\uAC00\uC758 \uCCA0\uCC3D \uBB38 \uC5F4\uC1E0\uB2E4"
-  - 
-  - 
   isSceneChange: 0
   eventscenechange: 
   isSound: 0
