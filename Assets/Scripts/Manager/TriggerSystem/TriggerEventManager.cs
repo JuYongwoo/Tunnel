@@ -178,48 +178,43 @@ public class TriggerEventManager
                 FadeOut();
             }
 
-
-            bool sameFollowObject = false;
-            bool samePatrolObject = false;
+            GameObject go = null;
 
             if (triggereventmap[eventname].isSpawnObject)
             {
                 //GameObject go = GameObject.Instantiate(Resources.Load<GameObject>($"Prefabs/" + triggereventmap[eventname].SpawnObjectName));
-                GameObject prefab = Resources.Load<GameObject>($"Prefabs/" + triggereventmap[eventname].SpawnPrefabName);
-                GameObject go = GameObject.Instantiate(prefab);
+                go = GameObject.Instantiate(Resources.Load<GameObject>($"Prefabs/" + triggereventmap[eventname].SpawnPrefabName));
                 go.name = triggereventmap[eventname].SpawnNaming;
                 go.transform.position = triggereventmap[eventname].SpawnObjectPosition;
-                if (triggereventmap[eventname].isFollow)
+            }
+            if (triggereventmap[eventname].isFollow)
+            {
+                if (triggereventmap[eventname].SpawnPrefabName == triggereventmap[eventname].eventfollower)
                 {
                     ManagerObject.Resource.GetorAddComponent<Following>(go);
-                    sameFollowObject = true;
                 }
-                if (triggereventmap[eventname].isPatrol)
+                else
+                {
+                    GameObject go2 = GameObject.Find(triggereventmap[eventname].eventfollower);
+                    ManagerObject.Resource.GetorAddComponent<Following>(go2);
+
+                }
+            }
+            if (triggereventmap[eventname].isPatrol)
+            {
+                if (triggereventmap[eventname].SpawnPrefabName == triggereventmap[eventname].PatrolObjectName)
                 {
                     Patrolling Patroll = ManagerObject.Resource.GetorAddComponent<Patrolling>(go);
                     Patroll.patrolpositions = triggereventmap[eventname].eventPatrolPositions;
-                    samePatrolObject = true;
+                }
+                else
+                {
+                    GameObject go2 = GameObject.Find(triggereventmap[eventname].PatrolObjectName);
+                    Patrolling Patroll = ManagerObject.Resource.GetorAddComponent<Patrolling>(go2);
+                    Patroll.patrolpositions = triggereventmap[eventname].eventPatrolPositions;
+
                 }
             }
-
-            if (triggereventmap[eventname].isFollow && !sameFollowObject)
-            {
-                GameObject go = GameObject.Find(triggereventmap[eventname].eventfollower);
-                ManagerObject.Resource.GetorAddComponent<Following>(go);
-
-            }
-            if (triggereventmap[eventname].isPatrol && !samePatrolObject)
-            {
-                GameObject go = GameObject.Find(triggereventmap[eventname].PatrolObjectName);
-                Patrolling Patroll = ManagerObject.Resource.GetorAddComponent<Patrolling>(go);
-                Patroll.patrolpositions = triggereventmap[eventname].eventPatrolPositions;
-
-
-
-
-            }
-
-
 
         }
         else
