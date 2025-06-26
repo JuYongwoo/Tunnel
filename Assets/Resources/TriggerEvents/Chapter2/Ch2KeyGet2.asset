@@ -16,7 +16,7 @@ MonoBehaviour:
   triggerPosition: {x: 0, y: 0, z: 0}
   triggerdistance: 0
   isItemTriggerActive: 1
-  tiggerGetItem: 
+  tiggerGetItem: secondkey
   isDescription: 0
   eventdescription: 
   isSpeech: 1
