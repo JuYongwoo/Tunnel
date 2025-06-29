@@ -47,6 +47,7 @@
 │   └── PlayerMove
 │
 └── UI                         # UI 캔버스 및 컨트롤러
+    ├── UIButtonBinder
     ├── InGameUI
     ├── SettingsUI
     └── TitleUI
